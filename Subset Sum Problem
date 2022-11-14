@@ -1,0 +1,21 @@
+class Solution
+{
+  bool subset(vector<int>ar, int ind, int sum, int i)
+  {
+  	if(sum==0)
+	  	return true;
+		  
+  	if(sum<0 || ind==0)
+	  	return false;
+    
+  	if(subset(ar, ind-1, sum-ar[i], i+1)==true)
+	  	return true;
+  	else
+	  	return subset(ar, ind-1, sum, i+1);   
+  } 
+  bool isSubsetSum(vector<int>ar, int sum)
+  {
+  	int n=ar.size(); 
+  	return subset(ar,n,sum,0);        
+  }
+ };
